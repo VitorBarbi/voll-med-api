@@ -29,6 +29,3 @@ git clone https://github.com/VitorBarbi/voll-med-api
 cd voll-med-api
 mvn spring-boot:run
 ```
-
-
-Open your web browser and go to: http://localhost:8080/hello
