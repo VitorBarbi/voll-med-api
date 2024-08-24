@@ -6,18 +6,16 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import med.voll.api.address.AddressDTO;
 
-public record PatientDTO(
-        @NotBlank
+public record PatientReadDTO(
         String name,
-        @NotBlank
-        @Email
         String email,
-        @NotBlank
-        String phone,
-        @NotBlank
-        String cpf,
-        @NotNull
-        @Valid
-        AddressDTO address
+        String cpf
 ) {
+        public PatientReadDTO(Patient patient){
+                this(
+                        patient.getName(),
+                        patient.getEmail(),
+                        patient.getCpf()
+                );
+        }
 }

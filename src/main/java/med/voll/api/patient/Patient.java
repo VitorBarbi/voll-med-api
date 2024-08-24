@@ -25,7 +25,7 @@ public class Patient {
     @Embedded
     private Address address;
 
-    public Patient(PatientDTO data) {
+    public Patient(PatientCreateDTO data) {
         this.name = data.name();
         this.email = data.email();
         this.phone = data.phone();
