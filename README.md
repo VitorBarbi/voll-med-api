@@ -21,6 +21,12 @@ This repository contains code from the course: [Spring Boot 3: Develop a REST AP
 ## Prerequisites
 - Java 22
 - Maven
+- MySQL
+
+## Environment Variables
+- DATABASE_URL
+- DATABASE_USERNAME
+- DATABASE_PASSWORD
 
 ## Run
 
