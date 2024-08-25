@@ -1,6 +1,7 @@
 package med.voll.api.patient;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,5 +32,17 @@ public class Patient {
         this.phone = data.phone();
         this.cpf = data.cpf();
         this.address = new Address(data.address());
+    }
+
+    public void updateData(@Valid PatientUpdateDTO data) {
+        if(data.name() != null){
+            this.name = data.name();
+        }
+        if(data.phone() != null){
+            this.phone = data.phone();
+        }
+        if(data.address() != null){
+            address.updateData(data.address());
+        }
     }
 }

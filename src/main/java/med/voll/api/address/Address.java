@@ -30,7 +30,31 @@ public class Address {
         this.zipCode = address.zipCode();
         this.neighborhood = address.neighborhood();
         this.street = address.street();
-        this.additionalInformation = address.additionalInformation();
         this.number = address.number();
+        this.additionalInformation = address.additionalInformation();
+    }
+
+    public void updateData(AddressDTO data) {
+        if(data.state() != null) {
+            this.state = data.state();
+        }
+        if(data.city() != null) {
+            this.city = data.city();
+        }
+        if(data.zipCode() != null) {
+            this.zipCode = data.zipCode();
+        }
+        if(data.neighborhood() != null) {
+            this.neighborhood = data.neighborhood();
+        }
+        if(data.street() != null) {
+            this.street = data.street();
+        }
+        if(data.number() != null) {
+            this.number = data.number();
+        }
+        if(data.additionalInformation() != null) {
+            this.additionalInformation = data.additionalInformation();
+        }
     }
 }

@@ -1,10 +1,8 @@
 package med.voll.api.controller;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import med.voll.api.doctor.Doctor;
-import med.voll.api.doctor.DoctorCreateDTO;
-import med.voll.api.doctor.DoctorReadDTO;
-import med.voll.api.doctor.DoctorRepository;
+import med.voll.api.doctor.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +17,7 @@ public class DoctorController {
     private DoctorRepository repository;
 
     @PostMapping
+    @Transactional
     public void register(@RequestBody @Valid DoctorCreateDTO data){
         this.repository.save(new Doctor(data));
     }
@@ -26,5 +25,12 @@ public class DoctorController {
     @GetMapping
     public Page<DoctorReadDTO> list(@PageableDefault(sort = {"name"}) Pageable pagination){
         return this.repository.findAll(pagination).map(DoctorReadDTO::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void update(@RequestBody @Valid DoctorUpdateDTO data){
+        var doctor = repository.getReferenceById(data.id());
+        doctor.updateData(data);
     }
 }
