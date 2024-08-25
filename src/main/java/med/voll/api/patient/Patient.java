@@ -26,6 +26,8 @@ public class Patient {
     @Embedded
     private Address address;
 
+    private boolean active;
+
     public Patient(PatientCreateDTO data) {
         this.name = data.name();
         this.email = data.email();
@@ -44,5 +46,9 @@ public class Patient {
         if(data.address() != null){
             address.updateData(data.address());
         }
+    }
+
+    public void delete() {
+        this.active = false;
     }
 }
